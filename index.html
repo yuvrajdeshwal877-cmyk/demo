@@ -741,7 +741,6 @@ function confirmAdd(){
   saveCart();updateCount();closeModal();
   toast(`${d.name} x${modalQtyVal} cart mein add ho gaya! 🎉`);
 }
-
 // ════════════════════════════════════
 // ADMIN
 // ════════════════════════════════════
@@ -763,7 +762,6 @@ function switchTab(name,el){
   if(name==="dishes")renderDishList();
   if(name==="settings"){document.getElementById("waNum").value=settings.phone;document.getElementById("restName").value=settings.store;}
 }
-
 function renderDishList(){
   document.getElementById("dishCount").textContent=dishes.length;
   document.getElementById("statDish").textContent=dishes.length;
@@ -779,7 +777,6 @@ function renderDishList(){
     </div>
   `).join("");
 }
-
 function saveDish(){
   const name=document.getElementById("dName").value.trim();
   const cat=document.getElementById("dCat").value.trim();
@@ -798,7 +795,6 @@ function saveDish(){
   clearForm();renderDishes();renderCatFilter();renderDishList();
   const msg=document.getElementById("saveMsg");msg.style.display="block";setTimeout(()=>msg.style.display="none",2500);
 }
-
 function editDish(i){
   const d=dishes[i];
   document.getElementById("dName").value=d.name;document.getElementById("dCat").value=d.cat;
@@ -818,7 +814,6 @@ function clearForm(){
   document.getElementById("editIdx").value="";document.getElementById("formTitle").textContent="NAYA DISH ADD KARO";
   resetImg();
 }
-
 function handleImg(e){
   const f=e.target.files[0];if(!f)return;
   if(f.size>5*1024*1024){toast("Image bahut badi hai! Max 5MB");return;}
@@ -834,7 +829,6 @@ function saveSettings(){
   settings.store=document.getElementById("restName").value.trim()||"Chaurasia's Kitchen";
   const msg=document.getElementById("settingsMsg");msg.style.display="block";setTimeout(()=>msg.style.display="none",2500);
 }
-
 function downloadHTML(){
   let html=document.documentElement.outerHTML;
   const dJSON=JSON.stringify(dishes,null,2);
@@ -847,7 +841,6 @@ function downloadHTML(){
   a.download="index.html";a.click();
   toast("index.html download ho gayi! GitHub pe upload karo ✅");
 }
-
 function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});}
 function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2800);}
 
@@ -857,5 +850,4 @@ renderDishes();
 renderCatFilter();
 updateCount();
 </script>
-
 </body></html>
